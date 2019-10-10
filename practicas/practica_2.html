@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by TEMPLATED
+http://templated.co
+Released for free under the Creative Commons Attribution License
+
+Name       : Captive Green 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20111225
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Practicas </title>
+<link href='http://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css' />
+<link href='http://fonts.googleapis.com/css?family=Marvel' rel='stylesheet' type='text/css' />
+<link href='http://fonts.googleapis.com/css?family=Marvel|Delius+Unicase' rel='stylesheet' type='text/css' />
+<link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css' />
+<link href="../style.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+<div id="wrapper">
+	<div id="wrapper2">
+		<div id="header" class="container">
+			<div id="logo">
+				<h1><a href="#">Practica  <span>2</span></a></h1>
+			</div>
+			<div id="menu">
+				<ul>
+					<li class="current_page_item"><a href="../index.html">Homepage</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="banner"></div>
+		<!-- end #header -->
+		<div id="page">
+			<div id="content">
+				<div class="post">
+
+					<h2 class="title"><a href="#">Ramificación</a></h2>
+					<p class="meta"><span class="date">Octubre 10, 2019</span><span class="posted">Posted by <a href="#">Adrián</a></span></p>
+					<div style="clear: both;">&nbsp;</div>
+					<div class="entry">
+						<!--Aquí la practica-->
+							<h1>Paso 1.</h1>
+							<p>
+								Crear una carpeta donde hacer el "git colne" del repositorio de git.
+								<br>
+								<label style="background-color: lightgray">
+									mkdir practica_2								
+								</label>
+
+							</p>
+							<br>
+
+							<h1>Paso 2.</h1>
+							<p>
+								Crear una rama "develop":
+								<br>
+								<label style="background-color: lightgray">
+										git branch develop							
+								</label>
+								<br>
+								Y podemos listar las ramas con el comando:
+								<br>
+								<label style="background-color: lightgray">
+										git branch -a 							
+								</label>
+
+							</p>
+							<br>
+
+							<h1>Paso 3.</h1>
+							<p>
+								Cambiar a la rama develop, junto con un push al git de nuestra nueva rama con los comandos:
+								<br>
+								<label style="background-color: lightgray">
+										git checkout develop
+										git push origin develop			
+								</label>
+
+							</p>
+							<br>
+
+							<h1>Paso 4.</h1>
+							<p>
+								
+								Ahora desde la rama develop crearemos unas nuevas ramas "feature_01" y "feature_02" con el comando:
+								<br>
+								<label style="background-color: lightgray">
+										git branch feature_01
+										git branch feature_02
+								</label>
+								
+							</p>
+							<br>
+
+							<h1>Paso 5.</h1>
+							<p>
+								Despúes de cambiar a la rama feature_01, vamos a modificar el "README.md" y lo subimos al git con:
+								<br>
+								<label style="background-color: lightgray">
+									git add README.md 
+									git commit -m "Readme /home/adrian/Escritorio/Pepe/Practicas/Git.io/Adrian.github.io/practicas/practica_2.htmlupdate"
+									git push origin feature_01
+								</label>
+								
+							</p>
+							<br>
+
+							<h1>Paso 6.</h1>
+							<p>
+								Lo mismo con la rama feature_02, cambiando el mismo documento "README.md" y ver como interactuar después con un conflicto entre features.
+								
+							</p>
+							<br>
+
+							<h1>Paso 7.</h1>
+							<p>
+								Nuevamente tenemos que hacer un merge, para ello tenemos que ir a la rama develop y hacerlo desde ahí:
+								<br>
+								<label style="background-color: lightgray">
+									git checkout develop
+									git merge feature_01
+									git merge feature_02
+								</label>
+								<br>
+								Tendremos un conflicto causado anteriormente por haber modificado el mismo documento "README.md" y git avisará donde está el conflicto.
+								Así que, modificaremos las cosas que causan el conflicto.
+
+							</p>
+							<br>
+
+							<h1>Paso 8.</h1>
+							<p>
+								Ahora que tenemos el conflicto solucionado, vamos a subirlo al Git desde la rama "develop", junto con una etiqueta anotada:
+								<br>
+								<label style="background-color: lightgray">
+									git add README.md 
+									git commit -m "README sin conflictos"
+									git push origin develop
+									
+									git tag -a GitFlow -m "Cambios de las features"
+									git push origin develop --tags
+								</label>
+								<br>
+								Podemos subir los nuevos cambios de la rama "develop" a la rama "master" con un git merge y así tenerlo en "producción":
+								<br>
+								<label style="background-color: lightgray">
+									git checkout master
+									git merge develop
+									git push origin master
+								</label>
+								
+							</p>
+							<br>
+
+							<h1>Paso 9.</h1>
+							<p>
+								Oh no! Hemos detectado un error en la rama "master", tendremos que recurrir a un hotfix:
+								<br>
+								<label style="background-color: lightgray">
+									git checkout master
+									git checkout -b hotfix_01 
+								</label>
+								*Anotación el comando "git checkout -b NombreRama" crea y seguidamente cambia a dicha rama.
+								<br>
+								Tenemos que solucionar el error "en mi caso un error muy grave en el README!!".
+								Después de arreglar el error tenemos que hacer:
+
+								<br>
+								<label style="background-color: lightgray">
+									git add README.md
+									git commit -m "Error en el README" 
+									git push origin hotfix_01
+								</label>
+								<br>
+								Solo falta hacer el merge en la rama de producción la "master" y a la "develop" y así poder estar actualizados:
+								<br>
+								<label style="background-color: lightgray">
+									git checkout develop
+									git merge hotfix_01 
+									git push origin develop
+										
+									git checkout master
+									git merge hotfix_01
+									git push origin master
+								</label>
+							</p>
+							<br>
+
+
+                        <hr>
+                        
+						<p class="links"><a href="#" title="b0x" class="comments">Siguiente "cambiar"</a></p>
+					</div>
+                
+                </div>
+			</div>
+			<!-- end #content -->
+			<div id="sidebar">
+				<ul>
+					<li>
+						<h2>Todas las practicas:</h2>
+						<ul>
+							<li><a href="#">Practica_1</a></li>
+                            <li><a href="#">Practica_2</a></li>
+						</ul>
+					</li>
+					
+				</ul>
+			</div>
+			<!-- end #sidebar -->
+			<div style="clear: both;">&nbsp;</div>
+		</div>
+		<!-- end #page -->
+		<div id="footer">
+			<p>&copy; Untitled. All rights reserved. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
+		</div>
+	</div>
+</div>
+<!-- end #footer -->
+</body>
+</html>

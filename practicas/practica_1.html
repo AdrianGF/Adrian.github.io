@@ -45,31 +45,39 @@ Released   : 20111225
 					<p class="meta"><span class="date">Octubre 4, 2019</span><span class="posted">Posted by <a href="#">Adrián</a></span></p>
 					<div style="clear: both;">&nbsp;</div>
 					<div class="entry">
-					<!--Aquí la practica-->
-                        <h4>Paso 1:</h4>
-                        
-                        <p>
-                            Para que podamos tener el servidor tendremos que asegurarnos de tener insatlados dependencias o software con la siguiente linea de comandos:
-                            <br>
-                            <span style="background-color: rgba(77, 77, 77, 0.322);">
-                                sudo apt-get install curl openssh-server ca-certificates postfix -y
-                            </span>
-                            <br>
-                        </p>
-                        
-                        <p>
-                            Ahora tenemos que instalar Gitlab CE y escribimos lo siguiente:
-                            <br>
+						<!--Aquí la practica-->
+							<h1>Primero:</h1>
+							<p>
+								Tenemos que instalar las dependencias necesarias:
+								<br>
+								<label style="background-color: lightgray">
+									sudo apt-get update
+									sudo apt-get install -y curl openssh-server ca-certificates									
+								</label>
 
-                            <span style="background-color: rgba(77, 77, 77, 0.322);">
-                                curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
-                            </span>
-                        </p>
-                        
-                        
+							</p>
+							<br>
+
+							<h1>Segundo:</h1>
+							<p>
+								Añadir los paquetes del respositorio de GitLab:
+								<br>
+								<label style="background-color: lightgray">
+									curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh | sudo bash
+								</label>
+
+								Después tenemos que crear la URL para poder acceder a la instancia de GitLab:
+								<br>
+								<label style="background-color: lightgray">
+									sudo EXTERNAL_URL="http://gitlab.adrian.com" apt-get install gitlab-ee
+								</label>
+
+							</p>
+							<br>
+
                         <hr>
                         <a href="https://ubunlog.com/instalar-gitlab-en-ubuntu/"> Link de referencia 1</a>
-                        <p class="links"><a href="#" title="b0x" class="comments">Siguiente "cambiar"</a></p>
+						<p class="links"><a href="#" title="b0x" class="comments">Siguiente "cambiar"</a></p>
 					</div>
                 
                 </div>
