@@ -51,7 +51,9 @@ Released   : 20111225
 								Crear una carpeta donde hacer el "git colne" del repositorio de git.
 								<br>
 								<label style="background-color: lightgray">
-									mkdir practica_2								
+									mkdir practica_2
+									<br>
+									gti clone https://github.com/AdrianGF/FW_PHP_OO_MVC_AJS.git								
 								</label>
 
 							</p>
@@ -62,13 +64,13 @@ Released   : 20111225
 								Crear una rama "develop":
 								<br>
 								<label style="background-color: lightgray">
-										git branch develop							
+									git branch develop							
 								</label>
 								<br>
 								Y podemos listar las ramas con el comando:
 								<br>
 								<label style="background-color: lightgray">
-										git branch -a 							
+									git branch -a 							
 								</label>
 
 							</p>
@@ -79,8 +81,9 @@ Released   : 20111225
 								Cambiar a la rama develop, junto con un push al git de nuestra nueva rama con los comandos:
 								<br>
 								<label style="background-color: lightgray">
-										git checkout develop
-										git push origin develop			
+									git checkout develop
+									<br>
+									git push origin develop			
 								</label>
 
 							</p>
@@ -92,8 +95,9 @@ Released   : 20111225
 								Ahora desde la rama develop crearemos unas nuevas ramas "feature_01" y "feature_02" con el comando:
 								<br>
 								<label style="background-color: lightgray">
-										git branch feature_01
-										git branch feature_02
+									git branch feature_01
+									<br>
+									git branch feature_02
 								</label>
 								
 							</p>
@@ -105,7 +109,9 @@ Released   : 20111225
 								<br>
 								<label style="background-color: lightgray">
 									git add README.md 
-									git commit -m "Readme /home/adrian/Escritorio/Pepe/Practicas/Git.io/Adrian.github.io/practicas/practica_2.htmlupdate"
+									<br>
+									git commit -m "Readme update"
+									<br>
 									git push origin feature_01
 								</label>
 								
@@ -125,7 +131,9 @@ Released   : 20111225
 								<br>
 								<label style="background-color: lightgray">
 									git checkout develop
+									<br>
 									git merge feature_01
+									<br>
 									git merge feature_02
 								</label>
 								<br>
@@ -140,11 +148,14 @@ Released   : 20111225
 								Ahora que tenemos el conflicto solucionado, vamos a subirlo al Git desde la rama "develop", junto con una etiqueta anotada:
 								<br>
 								<label style="background-color: lightgray">
-									git add README.md 
+									git add README.md
+									<br>
 									git commit -m "README sin conflictos"
+									<br>
 									git push origin develop
-									
+									<br><br>
 									git tag -a GitFlow -m "Cambios de las features"
+									<br>
 									git push origin develop --tags
 								</label>
 								<br>
@@ -152,7 +163,9 @@ Released   : 20111225
 								<br>
 								<label style="background-color: lightgray">
 									git checkout master
+									<br>
 									git merge develop
+									<br>
 									git push origin master
 								</label>
 								
@@ -165,8 +178,10 @@ Released   : 20111225
 								<br>
 								<label style="background-color: lightgray">
 									git checkout master
+									<br>
 									git checkout -b hotfix_01 
 								</label>
+								<br>
 								*Anotación el comando "git checkout -b NombreRama" crea y seguidamente cambia a dicha rama.
 								<br>
 								Tenemos que solucionar el error "en mi caso un error muy grave en el README!!".
@@ -175,7 +190,9 @@ Released   : 20111225
 								<br>
 								<label style="background-color: lightgray">
 									git add README.md
+									<br>
 									git commit -m "Error en el README" 
+									<br>
 									git push origin hotfix_01
 								</label>
 								<br>
@@ -183,11 +200,15 @@ Released   : 20111225
 								<br>
 								<label style="background-color: lightgray">
 									git checkout develop
+									<br>
 									git merge hotfix_01 
+									<br>
 									git push origin develop
-										
+									<br><br>
 									git checkout master
+									<br>
 									git merge hotfix_01
+									<br>
 									git push origin master
 								</label>
 							</p>
@@ -196,7 +217,7 @@ Released   : 20111225
 
                         <hr>
                         
-						<p class="links"><a href="#" title="b0x" class="comments">Siguiente "cambiar"</a></p>
+						<p class="links"><a href="./practica_1.html" title="b0x" class="comments">Anterior</a><a href="./practica_3.html" title="b0x" class="comments">Siguiente</a></p>
 					</div>
                 
                 </div>
@@ -207,7 +228,7 @@ Released   : 20111225
 					<li>
 						<h2>Todas las practicas:</h2>
 						<ul>
-							<li><a href="#">Practica_1</a></li>
+							<li><a href="./practica_1.html">Practica_1</a></li>
                             <li><a href="#">Practica_2</a></li>
 						</ul>
 					</li>
