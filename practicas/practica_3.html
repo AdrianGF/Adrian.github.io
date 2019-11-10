@@ -1,0 +1,352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by TEMPLATED
+http://templated.co
+Released for free under the Creative Commons Attribution License
+
+Name       : Captive Green 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20111225
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Practicas </title>
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css' />
+	<link href='http://fonts.googleapis.com/css?family=Marvel' rel='stylesheet' type='text/css' />
+	<link href='http://fonts.googleapis.com/css?family=Marvel|Delius+Unicase' rel='stylesheet' type='text/css' />
+	<link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css' />
+	<link href="../style.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+
+<body>
+	<div id="wrapper">
+		<div id="wrapper2">
+			<div id="header" class="container">
+				<div id="logo">
+					<h1><a href="#">Practica <span>3</span></a></h1>
+				</div>
+				<div id="menu">
+					<ul>
+						<li class="current_page_item"><a href="../index.html">Homepage</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="banner"></div>
+			<!-- end #header -->
+			<div id="page">
+				<div id="content">
+					<div class="post">
+
+						<h2 class="title"><a href="#">Apache</a></h2>
+						<p class="meta"><span class="date">Octubre 23, 2019</span><span class="posted">Posted by <a
+									href="#">Adrián</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+							<!--Aquí la practica-->
+							<div style="text-align: center;">
+								<h1>-PARTE 01-</h1>
+							</div>
+							<h1>Paso 1.</h1>
+							<p>
+								Apache es un servidor web con un código abierto y de uso gratuito.
+								Será lo que usaremos en esta practica.
+								Para ello necesitamos instalar "apache2" con el siguiente comando:
+								<br>
+								<label style="background-color: lightgray">
+									sudo apt-get install apache2
+								</label>
+								<br>
+								Ya está instaldo, solo falta la configuración necesaria y así poder continuar con la
+								practica.
+							</p>
+
+							<h1>Paso 2.</h1>
+							<p>
+								Crear el php y verlo
+								primero ir a la ruta /var/www/ y crear una carpeta para nuestro primer sitio web
+								"sitioPhp" y dentro del mismo un archivo "index.php"
+								<br>
+								<label style="background-color: lightgray">
+									mkdir /var/www/sitioPhp
+									touch /var/www/sitioPhp/index.php
+								</label>
+								<br>
+
+							</p>
+
+							<h1>Paso 3.</h1>
+							<p>
+								Ahora toca la configuración de la carpeta "/etc/apache2" con sus respectivos archivos:
+								-Primero entraremos a la carpeta "sites-available"
+								-Copiaremos el contenido del "000-default-ssl.conf" a uno nuevo "sitioPhp.conf" con el
+								siguiente comando:
+								<br>
+								<label style="background-color: lightgray">
+									cp /etc/apache2/sites-available/000-default.conf
+									/etc/apache2/sites-available/sitioPhp.conf
+								</label>
+								<br>
+								-Seguidamente editaremos la configuración del "sitioPhp"
+								-Tendremos que modificar la priemra linea y cambiar el puerto al "82" tal que así:
+								<br>
+								<label style="background-color: lightgray">
+									&lt;VirtualHost *:82&gt;
+								</label>
+								<br>
+								-Y cambiar la ruta del documento al deseado de esta forma::
+								<br>
+								<label style="background-color: lightgray">
+									DocumentRoot /var/www/sitioPhp
+								</label>
+								<br>
+								-También tendremos que añadir seguidamente del paso anterior estas lineas:
+								<br>
+								<label style="background-color: lightgray">
+									&lt;Directory /var/www/sitioPhp&gt;
+										Require all granted
+									&lt;/Directory&gt;
+								</label>
+								<br>
+							</p>
+
+							<h1>Paso 4.</h1>
+							<p>
+								También es necesario cambiar el puero en el documento "ports.conf" del directorio anterior al actual.
+								Editaremos el puerto al que nosotros queramos "82 en este caso":
+								<br>
+								<label style="background-color: lightgray">
+									Listen 82
+								</label>
+								<br>
+							</p>
+
+							<h1>Paso 5.</h1>
+							<p>
+								Antes de comprobar que funcione hay que ejecutar la siguiente linea de comandos:
+								<br>
+								<label style="background-color: lightgray">
+									a2dissite 000-default.conf && a2ensite sitioPhp.conf
+									service apache2 reload
+								</label>
+								<br>
+								Así los cambios realizados se podrán aplicar, tendría que quedar tal que así:
+								<div style="height: 100px;">
+									<img src="../images/apache2_01.png" alt="apache2">
+								</div>
+								
+							</p>
+
+							<h1>Paso 6.</h1>
+							<p>
+								Ahora vamos a crear los "logs" de nuesto servidor apache2.
+									-Crearemos la ruta donde se guardarán los logs:
+								<br>
+								<label style="background-color: lightgray">
+									mkdir /etc/logs/sitioPhp
+								</label>
+								<br>
+									-Y copiaremos los documentos de los actuales logs al nuevo directorio:
+								<br>
+								<label style="background-color: lightgray">
+									cp -r /var/log/apache2/. /etc/logs/sitioPhp/
+								</label>
+								<br>
+								Ahora tocará cambiar la ruta de nuestra configuración:
+									-En el documento "apache2.conf" apartado "ErrorLog": 
+								<br>
+								<label style="background-color: lightgray">
+									ErrorLog /etc/logs/sitioPhp/error.log
+								</label>
+								<br>
+									-En el documento "/sites-available/sitioPhp.conf":
+								<br>
+								<label style="background-color: lightgray">
+									ErrorLog /etc/logs/sitioPhp/error.log
+									CustomLog /etc/logs/sitioPhp/access.log combined								
+								</label>
+								<br>
+								Y tendremos que hacer el reaload:
+								<br>
+								<label style="background-color: lightgray">
+									service apache2 reload								
+								</label>
+								<br>
+							
+							</p>
+
+							<h1>Paso 7.</h1>
+							<p>
+								También crearemos nuestro CustomLog propio, en la carpeta donde estan los logs, crearemos un documento llamado "log_personalizado.log",
+								después en el documento "apache2.conf" pondremos las siguientes lineas:
+								<br>
+								<label style="background-color: lightgray">
+										LogFormat "%t %h %m %>s" PhpLogFormat 
+										CustomLog "/etc/logs/sitioPhp/log_personalizado.log" PhpLogFormat 										
+								</label>
+								<br>
+								Y otro apache2 reload.
+							</p>
+
+							<h1>Paso 8.</h1>
+							<p>
+								Podemos crear también un mensaje de error al buscar un apartado no existente en nuestro sitio web:
+									-Primero tenemos que añadir el documento "apache2.conf" el "AllowOverride All"
+								<br>
+								<label style="background-color: lightgray">
+									&lt;Directory /var/www/&gt;
+										Options Indexes FollowSymLinks
+										AllowOverride All
+										Require all granted
+									&lt;/Directory&gt;														
+								</label>
+								<br>
+									-Después crear un ".htaccess" en el directorio "/etc/www/sitioPhpy añadir lo siguiente:"
+								<br>
+								<label style="background-color: lightgray">
+									ErrorDocument 404 "Pagina no encontrada"							
+								</label>
+								<br>
+								Y quedaría tal que así al ingresar una ruta no existente:
+								<div style="height: 100px;">
+									<img src="../images/apache2_02.png" alt="apache2">
+								</div>
+							</p>
+							
+							<br><br><br><br><br><br><br>
+							
+							<div style="text-align: center;">
+									<h1>-PARTE 02-</h1>
+								</div>
+								<h1>Paso 1.</h1>
+								<p>
+									Instalar node con el comando "también estaría el apache2 instalado": 
+									<br>
+									<label style="background-color: lightgray">
+										sudo apt-get install nodejs
+									</label>
+									<br>
+								</p>
+
+								<h1>Paso 2.</h1>
+								<p>
+									Ahora crear en un directorio en la ruta "/var/www/sitioNode" llamado "app.js"
+									y añadiremos esto al dicho archivo:
+									<br>
+									<label style="background-color: lightgray">
+											var http = require ('http');
+
+											http.createServer(function (req, res) {
+													res.writeHead(200, {'Content-Type': 'text/plain'});
+											
+													res.end('Hola soy node!');
+											
+											}).listen(81, '127.0.0.1');											
+									</label>
+									<br>
+									Como podemos observar esta en el puerto 81.
+								</p>
+
+								<h1>Paso 3.</h1>
+								<p>
+									Iremos a la ruta "/etc/apache2/" y añadiremos la siguiente linea al documento "apache2.conf"
+									<br>
+									<label style="background-color: lightgray">
+											ProxyPass /node http://localhost:3000
+									</label>
+									<br>
+									En este caso en el puerto 3000
+									También lo ñadiremos una entrada en el documento "ports.conf" del puerto 3000 y.
+								</p>
+
+								
+								<h1>Paso 4.</h1>
+								<p>
+									Tendremos que tener los documentos: "porxy.conf" , "proxy.load" y "proxy_http.load" en las carpetas "mods-enabled" y "mods-available".
+									Y tendremos que hacer un restart a nuestro apache:
+									<br>
+									<label style="background-color: lightgray">
+										service apache2 restart
+									</label>
+									<br>
+								</p>
+
+								<h1>Paso 5.</h1>
+								<p>
+									Finalmente iremos a la ruta "/var/www/sitioNode" y ejecutaremos node:
+									<br>
+									<label style="background-color: lightgray">
+										node app.js
+									</label>
+									<br>
+									El resultado seria tal que así:
+									<div style="height: 100px;">
+											<img src="../images/apache2_03.png" alt="apache2">
+									</div>
+								</p>
+
+
+								<h1>Paso 6.</h1>
+								<p>
+									Para los los iremos a la ruta "/etc/apache2/sites-available" y en el documento "sitioNode.conf" añadiremos lo siguiente:
+									<br>
+									<label style="background-color: lightgray">
+										ErrorLog /etc/logs/sitioNode/error.log
+										CustomLog /etc/logs/sitioNode/access.log combined									
+									</label>
+									<br>
+									También se pueden añadir formatos en el documento "apache2.conf"
+								</p>
+
+								<h1>Paso 7.</h1>
+								<p>
+									Para los logs iremos a la ruta "/etc/apache2/sites-available" y en el documento "sitioNode.conf" añadiremos lo siguiente:
+									<br>
+									<label style="background-color: lightgray">
+										ErrorLog /etc/logs/sitioNode/error.log
+										CustomLog /etc/logs/sitioNode/access.log combined									
+									</label>
+									<br>
+									También se pueden añadir formatos en el documento "apache2.conf"
+								</p>
+
+							<hr>
+							<p class="links"><a href="./practica_4.html" title="practica_4"
+									class="comments">Siguiente</a></p>
+						</div>
+
+					</div>
+				</div>
+				<!-- end #content -->
+				<div id="sidebar">
+					<ul>
+						<li>
+							<h2>Todas las practicas:</h2>
+							<ul>
+								<li><a href="./practica_1.html">Practica_1</a></li>
+								<li><a href="./practica_2.html">Practica_2</a></li>
+								<li><a href="#">Practica_3</a></li>
+							</ul>
+						</li>
+
+					</ul>
+				</div>
+				<!-- end #sidebar -->
+				<div style="clear: both;">&nbsp;</div>
+			</div>
+			<!-- end #page -->
+			<div id="footer">
+				<p>&copy; Untitled. All rights reserved. Design by <a href="http://templated.co"
+						rel="nofollow">TEMPLATED</a>.</p>
+			</div>
+		</div>
+	</div>
+	<!-- end #footer -->
+</body>
+
+</html>
