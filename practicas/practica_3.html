@@ -109,7 +109,7 @@ Released   : 20111225
 								<br>
 								<label style="background-color: lightgray">
 									&lt;Directory /var/www/sitioPhp&gt;
-										Require all granted
+									Require all granted
 									&lt;/Directory&gt;
 								</label>
 								<br>
@@ -117,7 +117,8 @@ Released   : 20111225
 
 							<h1>Paso 4.</h1>
 							<p>
-								También es necesario cambiar el puero en el documento "ports.conf" del directorio anterior al actual.
+								También es necesario cambiar el puero en el documento "ports.conf" del directorio
+								anterior al actual.
 								Editaremos el puerto al que nosotros queramos "82 en este caso":
 								<br>
 								<label style="background-color: lightgray">
@@ -139,55 +140,56 @@ Released   : 20111225
 								<div style="height: 100px;">
 									<img src="../images/apache2_01.png" alt="apache2">
 								</div>
-								
+
 							</p>
 
 							<h1>Paso 6.</h1>
 							<p>
 								Ahora vamos a crear los "logs" de nuesto servidor apache2.
-									-Crearemos la ruta donde se guardarán los logs:
+								-Crearemos la ruta donde se guardarán los logs:
 								<br>
 								<label style="background-color: lightgray">
 									mkdir /etc/logs/sitioPhp
 								</label>
 								<br>
-									-Y copiaremos los documentos de los actuales logs al nuevo directorio:
+								-Y copiaremos los documentos de los actuales logs al nuevo directorio:
 								<br>
 								<label style="background-color: lightgray">
 									cp -r /var/log/apache2/. /etc/logs/sitioPhp/
 								</label>
 								<br>
 								Ahora tocará cambiar la ruta de nuestra configuración:
-									-En el documento "apache2.conf" apartado "ErrorLog": 
+								-En el documento "apache2.conf" apartado "ErrorLog":
 								<br>
 								<label style="background-color: lightgray">
 									ErrorLog /etc/logs/sitioPhp/error.log
 								</label>
 								<br>
-									-En el documento "/sites-available/sitioPhp.conf":
+								-En el documento "/sites-available/sitioPhp.conf":
 								<br>
 								<label style="background-color: lightgray">
 									ErrorLog /etc/logs/sitioPhp/error.log
-									CustomLog /etc/logs/sitioPhp/access.log combined								
+									CustomLog /etc/logs/sitioPhp/access.log combined
 								</label>
 								<br>
 								Y tendremos que hacer el reaload:
 								<br>
 								<label style="background-color: lightgray">
-									service apache2 reload								
+									service apache2 reload
 								</label>
 								<br>
-							
+
 							</p>
 
 							<h1>Paso 7.</h1>
 							<p>
-								También crearemos nuestro CustomLog propio, en la carpeta donde estan los logs, crearemos un documento llamado "log_personalizado.log",
+								También crearemos nuestro CustomLog propio, en la carpeta donde estan los logs,
+								crearemos un documento llamado "log_personalizado.log",
 								después en el documento "apache2.conf" pondremos las siguientes lineas:
 								<br>
 								<label style="background-color: lightgray">
-										LogFormat "%t %h %m %>s" PhpLogFormat 
-										CustomLog "/etc/logs/sitioPhp/log_personalizado.log" PhpLogFormat 										
+									LogFormat "%t %h %m %>s" PhpLogFormat
+									CustomLog "/etc/logs/sitioPhp/log_personalizado.log" PhpLogFormat
 								</label>
 								<br>
 								Y otro apache2 reload.
@@ -195,21 +197,22 @@ Released   : 20111225
 
 							<h1>Paso 8.</h1>
 							<p>
-								Podemos crear también un mensaje de error al buscar un apartado no existente en nuestro sitio web:
-									-Primero tenemos que añadir el documento "apache2.conf" el "AllowOverride All"
+								Podemos crear también un mensaje de error al buscar un apartado no existente en nuestro
+								sitio web:
+								-Primero tenemos que añadir el documento "apache2.conf" el "AllowOverride All"
 								<br>
 								<label style="background-color: lightgray">
 									&lt;Directory /var/www/&gt;
-										Options Indexes FollowSymLinks
-										AllowOverride All
-										Require all granted
-									&lt;/Directory&gt;														
+									Options Indexes FollowSymLinks
+									AllowOverride All
+									Require all granted
+									&lt;/Directory&gt;
 								</label>
 								<br>
-									-Después crear un ".htaccess" en el directorio "/etc/www/sitioPhpy añadir lo siguiente:"
+								-Después crear un ".htaccess" en el directorio "/etc/www/sitioPhpy añadir lo siguiente:"
 								<br>
 								<label style="background-color: lightgray">
-									ErrorDocument 404 "Pagina no encontrada"							
+									ErrorDocument 404 "Pagina no encontrada"
 								</label>
 								<br>
 								Y quedaría tal que así al ingresar una ruta no existente:
@@ -217,104 +220,179 @@ Released   : 20111225
 									<img src="../images/apache2_02.png" alt="apache2">
 								</div>
 							</p>
-							
+
 							<br><br><br><br><br><br><br>
-							
+
 							<div style="text-align: center;">
-									<h1>-PARTE 02-</h1>
+								<h1>-PARTE 02-</h1>
+							</div>
+							<h1>Paso 1.</h1>
+							<p>
+								Instalar node con el comando "también estaría el apache2 instalado":
+								<br>
+								<label style="background-color: lightgray">
+									sudo apt-get install nodejs
+								</label>
+								<br>
+								También activaremos el proxy:
+								<br>
+								<label style="background-color: lightgray">
+									a2enmod proxy
+									a2enmod proxy_http
+								</label>
+								<br>
+							</p>
+
+							<h1>Paso 2.</h1>
+							<p>
+								En un nuevo documento .conf "en mi caso sitioNode.conf", añadiremos:
+								<br>
+								<label style="background-color: lightgray">
+									&lt;VirtualHost *:81&gt;
+
+									ServerAdmin webmaster@localhost
+									DocumentRoot /var/www/sitioNode
+									&lt;Directory /var/www/sitioNode&gt;
+									Require all granted
+									&lt;/Directory&gt;
+
+									ProxyRequests off
+									ProxyPass / http://127.0.0.1:3000/
+									ProxyReverse / http://127.0.0.1:3000/
+									&lt;/VirtualHost&gt;
+								</label>
+								<br>
+								Como podemos observar esta en el puerto 81, y activar el puerto en "ports.conf".
+							</p>
+
+							<h1>Paso 3.</h1>
+							<p>
+								Si vamos a ruta con estos pasos ya hechos saldrá algo tal que así:
+								<br>
+								<div style="height: 400px;">
+									<img src="../images/apache2_03.png" alt="apache2">
 								</div>
-								<h1>Paso 1.</h1>
-								<p>
-									Instalar node con el comando "también estaría el apache2 instalado": 
-									<br>
-									<label style="background-color: lightgray">
-										sudo apt-get install nodejs
-									</label>
-									<br>
-								</p>
+								<br>
+								Ahora tocará encender el "servidor" node.
+							</p>
+							<div></div>
 
-								<h1>Paso 2.</h1>
-								<p>
-									Ahora crear en un directorio en la ruta "/var/www/sitioNode" llamado "app.js"
-									y añadiremos esto al dicho archivo:
-									<br>
-									<label style="background-color: lightgray">
-											var http = require ('http');
+							<h1>Paso 4.</h1>
+							<p>
+								En la siguiente imagen puedes observar que he creado un "server.js", con un ejemplo de
+								"hola soy Node!".
+								<br>
+								Solamente tenemos que ejecutar el archivo con "node server.js
+								<br>
+								<div style="height: 300px;">
+									<a href="../images/apache2_04.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/apache2_04.png" alt="apache2" height="300px">
+									</a>
+								</div>
+								<br>
+							</p>
 
-											http.createServer(function (req, res) {
-													res.writeHead(200, {'Content-Type': 'text/plain'});
-											
-													res.end('Hola soy node!');
-											
-											}).listen(81, '127.0.0.1');											
-									</label>
-									<br>
-									Como podemos observar esta en el puerto 81.
-								</p>
+							<h1>Paso 5. Logs</h1>
+							<p>
+								Tendremos que añadir en el ".conf" la ruta de los logs:
+								<br>
+								<div style="height: 300px;">
+									<a href="../images/apache2_05.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/apache2_05.png" alt="apache2" height="300px">
+									</a>
+								</div>
+								<br>
+							</p>
+							<br>
+							<h1>Paso 6. Nuevo Directorio</h1>
+							<p>
+								Para crear una ruta en el "/public_files" de forma restringidas:
+								<br>
+								-Entrar y modificar/añadir como las siguientes imagenes:
+								<br>
+								1.- Añadir el directorio creado en el "apache2.conf":
+								<div style="height: 300px;">
+									<a href="../images/apache2_07.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/apache2_07.png" alt="apache2" height="300px">
+									</a>
+								</div>
+								<br>
+								2.- En el .conf de nuestro sitio evitar que entre al proxy en la ruta indicada:
+								<div style="height: 300px;">
+									<a href="../images/apache2_12.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/apache2_12.png" alt="apache2" height="300px">
+									</a>
+								</div>
+								<br>
+								3.- Crear un usuario autorizado:
+								<div style="height: 300px;">
+									<a href="../images/apache2_06.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/apache2_06.png" alt="apache2" height="300px">
+									</a>
+								</div>
+								<br>
+								4.- Crear un .htacces en "/var/www/sitioNode/public_files":
+								<div style="height: 300px;">
+									<a href="../images/apache2_08.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/apache2_08.png" alt="apache2" height="300px">
+									</a>
+								</div>
+								<br>
+								5.- Añadir en él la autentificación:
+								<div style="height: 300px;">
+									<a href="../images/apache2_09.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/apache2_09.png" alt="apache2" height="300px">
+									</a>
+								</div>
+								<br>
+								6.- Ahora vamos a la url que configuramos y nos pedirá identificarse:
+								<div style="height: 300px;">
+									<a href="../images/apache2_10.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/apache2_10.png" alt="apache2" height="300px">
+									</a>
+								</div>
+								<br>
+								7.- Si la autentificación es verdadera, saldrá el contenido que tendría que mostrar:
+								<div style="height: 300px;">
+									<a href="../images/apache2_11.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/apache2_11.png" alt="apache2" height="300px">
+									</a>
+								</div>
+								<br>
+							</p>
 
-								<h1>Paso 3.</h1>
-								<p>
-									Iremos a la ruta "/etc/apache2/" y añadiremos la siguiente linea al documento "apache2.conf"
-									<br>
-									<label style="background-color: lightgray">
-											ProxyPass /node http://localhost:3000
-									</label>
-									<br>
-									En este caso en el puerto 3000
-									También lo ñadiremos una entrada en el documento "ports.conf" del puerto 3000 y.
-								</p>
-
-								
-								<h1>Paso 4.</h1>
-								<p>
-									Tendremos que tener los documentos: "porxy.conf" , "proxy.load" y "proxy_http.load" en las carpetas "mods-enabled" y "mods-available".
-									Y tendremos que hacer un restart a nuestro apache:
-									<br>
-									<label style="background-color: lightgray">
-										service apache2 restart
-									</label>
-									<br>
-								</p>
-
-								<h1>Paso 5.</h1>
-								<p>
-									Finalmente iremos a la ruta "/var/www/sitioNode" y ejecutaremos node:
-									<br>
-									<label style="background-color: lightgray">
-										node app.js
-									</label>
-									<br>
-									El resultado seria tal que así:
-									<div style="height: 100px;">
-											<img src="../images/apache2_03.png" alt="apache2">
-									</div>
-								</p>
-
-
-								<h1>Paso 6.</h1>
-								<p>
-									Para los los iremos a la ruta "/etc/apache2/sites-available" y en el documento "sitioNode.conf" añadiremos lo siguiente:
-									<br>
-									<label style="background-color: lightgray">
-										ErrorLog /etc/logs/sitioNode/error.log
-										CustomLog /etc/logs/sitioNode/access.log combined									
-									</label>
-									<br>
-									También se pueden añadir formatos en el documento "apache2.conf"
-								</p>
-
-								<h1>Paso 7.</h1>
-								<p>
-									Para los logs iremos a la ruta "/etc/apache2/sites-available" y en el documento "sitioNode.conf" añadiremos lo siguiente:
-									<br>
-									<label style="background-color: lightgray">
-										ErrorLog /etc/logs/sitioNode/error.log
-										CustomLog /etc/logs/sitioNode/access.log combined									
-									</label>
-									<br>
-									También se pueden añadir formatos en el documento "apache2.conf"
-								</p>
-
+							<h1>Paso 7. Redirección</h1>
+							<p>
+								He añadidio en "sitioNode.conf" un location de la ruta "documntacion" y el redirect tal que así:
+								<div style="height: 300px;">
+									<a href="../images/apache2_13.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/apache2_13.png" alt="apache2" height="300px">
+									</a>
+								</div>
+							</p>
+							<hr>
+							<h1>Opcional:</h1>
+							<p>
+								He instalado el goacces con el comando:
+								<br>
+								<label style="background-color: lightgray">
+									sudo apt-get install goacces
+								</label>
+								<br>
+								Y definirle la ruta como en la siguientes capturas:
+								<br>
+								<div style="height: 300px;">
+									<a href="../images/apache2_14.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/apache2_14.png" alt="apache2" height="300px">
+									</a>
+								</div>
+								<br>
+								<div style="height: 300px;">
+									<a href="../images/apache2_15.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/apache2_15.png" alt="apache2" height="300px">
+									</a>
+								</div>
+							</p>
 							<hr>
 							<p class="links"><a href="./practica_4.html" title="practica_4"
 									class="comments">Siguiente</a></p>
