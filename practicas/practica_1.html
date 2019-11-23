@@ -11,99 +11,365 @@ Released   : 20111225
 
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>Practicas </title>
-<link href='http://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css' />
-<link href='http://fonts.googleapis.com/css?family=Marvel' rel='stylesheet' type='text/css' />
-<link href='http://fonts.googleapis.com/css?family=Marvel|Delius+Unicase' rel='stylesheet' type='text/css' />
-<link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css' />
-<link href="../style.css" rel="stylesheet" type="text/css" media="screen" />
-</head>
-<body>
-<div id="wrapper">
-	<div id="wrapper2">
-		<div id="header" class="container">
-			<div id="logo">
-				<h1><a href="#">Practica  <span>1</span></a></h1>
-			</div>
-			<div id="menu">
-				<ul>
-					<li class="current_page_item"><a href="../index.html">Homepage</a></li>
-				</ul>
-			</div>
-		</div>
-		<div id="banner"></div>
-		<!-- end #header -->
-		<div id="page">
-			<div id="content">
-				<div class="post">
 
-					<h2 class="title"><a href="#">GitLab</a></h2>
-					<p class="meta"><span class="date">Octubre 4, 2019</span><span class="posted">Posted by <a href="#">Adrián</a></span></p>
-					<div style="clear: both;">&nbsp;</div>
-					<div class="entry">
-						<!--Aquí la practica-->
-							<h1>Primero:</h1>
+<head>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Practicas </title>
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css' />
+	<link href='http://fonts.googleapis.com/css?family=Marvel' rel='stylesheet' type='text/css' />
+	<link href='http://fonts.googleapis.com/css?family=Marvel|Delius+Unicase' rel='stylesheet' type='text/css' />
+	<link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css' />
+	<link href="../style.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+
+<body>
+	<div id="wrapper">
+		<div id="wrapper2">
+			<div id="header" class="container">
+				<div id="logo">
+					<h1><a href="#">Practica <span>1</span></a></h1>
+				</div>
+				<div id="menu">
+					<ul>
+						<li class="current_page_item"><a href="../index.html">Homepage</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="banner"></div>
+			<!-- end #header -->
+			<div id="page">
+				<div id="content">
+					<div class="post">
+
+						<h2 class="title"><a href="#">GitLab</a></h2>
+						<p class="meta"><span class="date">Octubre 23, 2019</span><span class="posted">Posted by <a
+									href="#">Adrián</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+							<!--Aquí la practica-->
+							<div style="text-align: center;">
+								<h1>-PARTE 01-</h1>
+							</div>
+							<h1>Paso 1.</h1>
 							<p>
-								Tenemos que instalar las dependencias necesarias:
+								GitLab nació en 2011 como un proyecto dentro de GitHub.
+								Es una interfaz muy ligera y simple y de código gratuito.
+								Para instalarlo tenremos que hacer los siguientes comandos:
 								<br>
 								<label style="background-color: lightgray">
 									sudo apt-get update
-									sudo apt-get install -y curl openssh-server ca-certificates									
+									<br>
+									sudo apt-get install -y curl openssh-server ca-certificates
 								</label>
-
+								<br>
+								<div style="height: 300px;">
+									<a href="../images/lab_01.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/lab_01.png" alt="GitLab" height="300px">
+									</a>
+								</div>
+								<br>
+								<br>
+								También he instalado postfix para el sistema de correo en local:
+								<br>
+								<label style="background-color: lightgray">
+									sudo apt-get install -y postfix
+								</label>
+								<br>
+								<div style="height: 300px;">
+									<a href="../images/lab_02.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/lab_02.png" alt="GitLab" height="300px">
+									</a>
+								</div>
+								<br>
+								<hr>
+								<div style="height: 300px;">
+									<a href="../images/lab_03.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/lab_03.png" alt="GitLab" height="300px">
+									</a>
+								</div>
+								<br>
 							</p>
-							<br>
 
-							<h1>Segundo:</h1>
+							<h1>Paso 2.</h1>
 							<p>
-								Añadir los paquetes del respositorio de GitLab:
+								Ahora toca instalar el paquete de GitLab:
 								<br>
 								<label style="background-color: lightgray">
-									curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh | sudo bash
+									sudo curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh | sudo bash
 								</label>
-
-								Después tenemos que crear la URL para poder acceder a la instancia de GitLab:
 								<br>
-								<label style="background-color: lightgray">
-									sudo EXTERNAL_URL="http://gitlab.adrian.com" apt-get install gitlab-ee
-								</label>
-
+								<div style="height: 300px;">
+									<a href="../images/lab_04.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/lab_04.png" alt="GitLab" height="300px">
+									</a>
+								</div>
+								<br>
 							</p>
-							<br>
 
-                        <hr>
-                        <a href="https://ubunlog.com/instalar-gitlab-en-ubuntu/"> Link de referencia 1</a>
-						<p class="links"><a href="./practica_2.html" title="Practica_2" class="comments">Siguiente</a></p>
+							<h1>Paso 3.</h1>
+							<p>
+								Seguidamente crear una ruta propia:
+								<br>
+								<label style="background-color: lightgray">
+									sudo EXTERNAL_URL="http://adrian" apt-get install gitlab-ee	
+								</label>
+								<br>
+								Después tendremos que añadir al archivo "gitlab.rb" y añadir la linea de la captura:
+								<br>
+								<br>
+								<label style="background-color: lightgray">
+									sudo -e /etc/gitlab/gitlab.rb
+								</label>
+								<br>
+								<div style="height: 300px;">
+									<a href="../images/lab_05.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/lab_05.png" alt="GitLab" height="300px">
+									</a>
+								</div>
+								<br>
+								<br>
+								Y hacer un reconfigure:
+								<br>
+								<label style="background-color: lightgray">
+									sudo gitlab-ctl reconfigure
+								</label>
+								<br>
+								<br>
+								<div style="height: 300px;">
+									<a href="../images/lab_06.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/lab_06.png" alt="GitLab" height="300px">
+									</a>
+								</div>
+								<br>
+							</p>
+
+							<div style="text-align: center;">
+								<h1>-PARTE 02-</h1>
+							</div>
+							<p>
+								Cambiar el puerto de acceso:
+								<br>
+								<div style="height: 300px;">
+									<a href="../images/lab_07.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/lab_07.png" alt="gitlab" height="300px">
+									</a>
+								</div>
+								<br>
+								<br>
+								<div style="height: 300px;">
+									<a href="../images/lab_08.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/lab_08.png" alt="GitLab" height="300px">
+									</a>
+								</div>
+								<br>
+							</p>
+
+							<p>
+								Evitar modificar el identificador:
+								<br>
+								<div style="height: 300px;">
+									<a href="../images/lab_09.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/lab_09.png" alt="gitlab" height="300px">
+									</a>
+								</div>
+								<br>
+							</p>
+
+							<p>
+								Modificar el tiempo de expiración:
+								<br>
+								<div style="height: 300px;">
+									<a href="../images/lab_10.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/lab_10.png" alt="gitlab" height="300px">
+									</a>
+								</div>
+								<br>
+							</p>
+
+							<div style="text-align: center;">
+								<h1>-PARTE 03-</h1>
+								He usado Postman y la API "NqNz8Q7dvZbkrjMvgzQv" para poder acceder a la modificacón de usuarios.
+							</div>
+
+							<p>
+								Creación del token:
+								<br>
+								<div style="height: 300px;">
+									<a href="../images/lab_11.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/lab_11.png" alt="gitlab" height="300px">
+									</a>
+								</div>
+								<br>
+							</p>
+
+							<p>
+								Alta, modificación y borrado de usuarios:
+								<br>
+								<div style="height: 300px;">
+									<a href="../images/lab_12.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/lab_12.png" alt="gitlab" height="300px">
+									</a>
+								</div>
+								<br>
+								<br>
+								<div style="height: 300px;">
+									<a href="../images/lab_13.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/lab_13.png" alt="gitlab" height="300px">
+									</a>
+								</div>
+								<br>
+								<br>
+								<div style="height: 300px;">
+									<a href="../images/lab_14.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/lab_14.png" alt="gitlab" height="300px">
+									</a>
+								</div>
+								<br>
+							</p>
+
+							<p>
+								Bloqueo y desbloqueo de usuarios:
+								<br>
+								<div style="height: 300px;">
+									<a href="../images/lab_15.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/lab_15.png" alt="gitlab" height="300px">
+									</a>
+								</div>
+								<br>
+								<br>
+								<div style="height: 300px;">
+									<a href="../images/lab_16.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/lab_16.png" alt="gitlab" height="300px">
+									</a>
+								</div>
+								<br>
+							</p>
+
+							<p>
+								Usuario administrador:
+								<br>
+								<div style="height: 300px;">
+									<a href="../images/lab_17.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/lab_17.png" alt="gitlab" height="300px">
+									</a>
+								</div>
+								<br>
+							</p>
+
+							<p>
+								Creación de proyectos:
+								<br>
+								<div style="height: 300px;">
+									<a href="../images/lab_18.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/lab_18.png" alt="gitlab" height="300px">
+									</a>
+								</div>
+								<br>
+							</p>
+
+							<div style="text-align: center;">
+								<h1>-PARTE 04-</h1>
+							</div>
+
+							<p>
+								Modificar la página de un proyecto:
+								<br>
+								<div style="height: 300px;">
+									<a href="../images/lab_19.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/lab_19.png" alt="gitlab" height="300px">
+									</a>
+								</div>
+								<br>
+							</p>
+
+							<p>
+								Modificar el login:
+								<br>
+								<div style="height: 300px;">
+									<a href="../images/lab_20.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/lab_20.png" alt="gitlab" height="300px">
+									</a>
+								</div>
+								<br>
+							</p>
+							
+							<p>
+								Modificar el favicon:
+								<br>
+								<div style="height: 300px;">
+									<a href="../images/lab_21.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/lab_21.png" alt="gitlab" height="300px">
+									</a>
+								</div>
+								<br>
+							</p>
+
+							<div style="text-align: center;">
+								<h1>-PARTE 05-</h1>
+
+							</div>
+
+							<p>
+								Importar proyecto GitHub -Forma interfaz-:
+								<br>
+								Tendremos que elegir la opción de GitHub y confirmar con un token.
+								<br>
+								<div style="height: 300px;">
+									<a href="../images/lab_22.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/lab_22.png" alt="gitlab" height="300px">
+									</a>
+								</div>
+								<br>
+							</p>
+
+							<p>
+								Importar proyecto GitHub -Forma API-:
+								<br>
+								Pondremos tambén el token en el "header":
+								<br>
+								<div style="height: 300px;">
+									<a href="../images/lab_23.png" target="_blank">-&gt;Abrir-Imagen-Completa&lt;-
+										<img src="../images/lab_23.png" alt="gitlab" height="300px">
+									</a>
+								</div>
+								<br>
+							</p>
+
+
+							<hr>
+							<p class="links"><a href="./practica_2.html" title="practica_2"
+									class="comments">Siguiente</a></p>
+						</div>
+
 					</div>
-                
-                </div>
+				</div>
+				<!-- end #content -->
+				<div id="sidebar">
+					<ul>
+						<li>
+							<h2>Todas las practicas:</h2>
+							<ul>
+								<li><a href="./practica_1.html">Practica_1</a></li>
+								<li><a href="./practica_2.html">Practica_2</a></li>
+								<li><a href="#">Practica_3</a></li>
+							</ul>
+						</li>
+
+					</ul>
+				</div>
+				<!-- end #sidebar -->
+				<div style="clear: both;">&nbsp;</div>
 			</div>
-			<!-- end #content -->
-			<div id="sidebar">
-				<ul>
-					<li>
-						<h2>Todas las practicas:</h2>
-						<ul>
-							<li><a href="#">Practica_1</a></li>
-                            <li><a href="./practica_2.html">Practica_2</a></li>
-						</ul>
-					</li>
-					
-				</ul>
+			<!-- end #page -->
+			<div id="footer">
+				<p>&copy; Untitled. All rights reserved. Design by <a href="http://templated.co"
+						rel="nofollow">TEMPLATED</a>.</p>
 			</div>
-			<!-- end #sidebar -->
-			<div style="clear: both;">&nbsp;</div>
-		</div>
-		<!-- end #page -->
-		<div id="footer">
-			<p>&copy; Untitled. All rights reserved. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
 		</div>
 	</div>
-</div>
-<!-- end #footer -->
+	<!-- end #footer -->
 </body>
+
 </html>
