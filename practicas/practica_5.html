@@ -1,0 +1,375 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by TEMPLATED
+http://templated.co
+Released for free under the Creative Commons Attribution License
+
+Name       : Captive Green 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20111225
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Practicas </title>
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css' />
+	<link href='http://fonts.googleapis.com/css?family=Marvel' rel='stylesheet' type='text/css' />
+	<link href='http://fonts.googleapis.com/css?family=Marvel|Delius+Unicase' rel='stylesheet' type='text/css' />
+	<link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css' />
+	<link href="../style.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+
+<body>
+	<div id="wrapper">
+		<div id="wrapper2">
+			<div id="header" class="container">
+				<div id="logo">
+					<h1><a href="#">Practica <span>4</span></a></h1>
+				</div>
+				<div id="menu">
+					<ul>
+						<li class="current_page_item"><a href="../index.html">Homepage</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="banner"></div>
+			<!-- end #header -->
+			<div id="page">
+				<div id="content">
+					<div class="post">
+
+						<h2 class="title"><a href="#">Docker</a></h2>
+						<p class="meta"><span class="date">Dic 14, 2019</span><span class="posted">Posted by <a
+									href="#">Adrián</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+							<!--Aquí la practica-->
+							<div style="text-align: center;">
+								<h1>Docker</h1>
+							</div>
+
+							<fieldset>
+								<legend>Qué es Docker:</legend>
+								<p>Con el uso de Docker podremos crear contenedores portables de software.</p>
+								<p>Docker es capaz de puede empaquetar una aplicación en un contenedor virtual.
+									Aporta flexibilidad y portabilidad.</p>
+								<p>Dcoker es un proyecto de código libre que ayuda en el despliegue de aplicaciones, por
+									la facilidad que supone con el dicho concepto de contenedores.</p>
+							</fieldset>
+							<hr>
+							<div style="text-align: center;">
+								<h1>-Parte 1-</h1>
+							</div>
+							<section>
+								<p>En esta práctica crearemos un contenedor MYSQL, para ello necesitaremos la imagen:
+								</p>
+
+								<div style="background-color: black; color: lightblue;">
+									<p style="padding: 5px;">$ docker pull mysql:[version]</p>
+								</div>
+
+								<div class="img_container">
+									<a href="../images/dock_01.png" target="_blank">
+										<p>Abrir imagen</p>
+										<img class="img" src="../images/dock_01.png" alt="Dcoker" height="300px">
+									</a>
+								</div>
+								<br>
+								<p>Pondré los parametros en un ".env", y mismamente le con el comando "docker run" le
+									diremos donde tiene que coger los parametros y añadiremos algunas especificaciones
+									en linea:</p>
+
+								<div style="background-color: black; color: lightblue;">
+									<p style="padding: 5px;">$ touch .env</p>
+									<p style="padding: 5px;">$ nano .env</p>
+								</div>
+
+								<div class="img_container">
+									<a href="../images/dock_02.png" target="_blank">
+										<p>Abrir imagen</p>
+										<img class="img" src="../images/dock_02.png" alt="Dcoker" height="300px">
+									</a>
+								</div>
+								<br>
+								<p>Lo ejecutamos: </p>
+
+								<div style="background-color: black; color: lightblue;">
+									<p style="padding: 5px;">$ docker run --env-file /home/adrian/.env --name mysql -v
+										vol_mysql:/var/lib/mysql --net=my_net -p 3306:3306 -d mysql:5.7</p>
+								</div>
+
+								<div class="img_container">
+									<a href="../images/dock_03.png" target="_blank">
+										<p>Abrir imagen</p>
+										<img class="img" src="../images/dock_03.png" alt="Dcoker" height="300px">
+									</a>
+								</div>
+								<br>
+								<p>Ahora veremos si el volumen y el contenedor están creados:</p>
+
+								<div style="background-color: black; color: lightblue;">
+									<p style="padding: 5px;">$ docker volume ls</p>
+								</div>
+
+								<div class="img_container">
+									<a href="../images/dock_04.png" target="_blank">
+										<p>Abrir imagen</p>
+										<img class="img" src="../images/dock_04.png" alt="Dcoker" height="300px">
+									</a>
+								</div>
+								<br>
+								<div style="background-color: black; color: lightblue;">
+									<p style="padding: 5px;">$ docker container ls -a</p>
+								</div>
+
+								<div class="img_container">
+									<a href="../images/dock_04_1.png" target="_blank">
+										<p>Abrir imagen</p>
+										<img class="img" src="../images/dock_04_1.png" alt="Dcoker" height="300px">
+									</a>
+								</div>
+								<br>
+							</section>
+							<br>
+							<hr>
+							<div style="text-align: center;">
+								<h1>-Parte 2-</h1>
+							</div>
+							<section>
+								<p>Vamos a crear ahora una imagen de Wordpress:
+								</p>
+
+								<div style="background-color: black; color: lightblue;">
+									<p style="padding: 5px;">$ docker pull bitnami:wordpress</p>
+								</div>
+
+								<div class="img_container">
+									<a href="../images/w_dock_01.png" target="_blank">
+										<p>Abrir imagen</p>
+										<img class="img" src="../images/w_dock_01.png" alt="Dcoker" height="300px">
+									</a>
+								</div>
+
+								<br>
+								<p>Hacemos también un ".env" con l cofiguración:
+								</p>
+
+								<div style="background-color: black; color: lightblue;">
+									<p style="padding: 5px;">$ touch .env</p>
+									<p style="padding: 5px;">$ nano .env</p>
+								</div>
+
+								<div class="img_container">
+									<a href="../images/w_dock_02.png" target="_blank">
+										<p>Abrir imagen</p>
+										<img class="img" src="../images/w_dock_02.png" alt="Dcoker" height="300px">
+									</a>
+								</div>
+
+								<br>
+								<p>Ahora ejecutamos con el "docker run":
+								</p>
+
+								<div style="background-color: black; color: lightblue;">
+									<p style="padding: 5px;">$ docker run --env-file /home/adrian/.env --name wordpress
+										-v
+										vol_wordpress:/var/www/html --net=my_net -p 80:80 -d wordpress:latest</p>
+								</div>
+
+								<div class="img_container">
+									<a href="../images/w_dock_03.png" target="_blank">
+										<p>Abrir imagen</p>
+										<img class="img" src="../images/w_dock_03.png" alt="Dcoker" height="300px">
+									</a>
+								</div>
+
+								<br>
+								<p>Finalmente vamos a ver si se crearon de forma correcta:
+								</p>
+
+								<div style="background-color: black; color: lightblue;">
+									<p style="padding: 5px;">$ docker container ls -a</p>
+								</div>
+
+								<div class="img_container">
+									<a href="../images/w_dock_04.png" target="_blank">
+										<p>Abrir imagen</p>
+										<img class="img" src="../images/w_dock_04.png" alt="Dcoker" height="300px">
+									</a>
+								</div>
+								<br>
+								<div style="background-color: black; color: lightblue;">
+									<p style="padding: 5px;">$ docker volume ls</p>
+								</div>
+
+								<div class="img_container">
+									<a href="../images/w_dock_04_1.png" target="_blank">
+										<p>Abrir imagen</p>
+										<img class="img" src="../images/w_dock_04_1.png" alt="Dcoker" height="300px">
+									</a>
+								</div>
+							</section>
+							<br>
+							<hr>
+							<div style="text-align: center;">
+								<h1>-Parte 3-</h1>
+							</div>
+							<section>
+								<p>Vamos a instalar ubuntu junto con apache2 para crear un servidor, mediante
+									dockerfile:
+								</p>
+
+								<div style="background-color: black; color: lightblue;">
+									<p style="padding: 5px;">$ touch Dockerfile</p>
+									<p style="padding: 5px;">$ nano Dockerfile</p>
+								</div>
+
+								<div class="img_container">
+									<a href="../images/l_dock_01.png" target="_blank">
+										<p>Abrir imagen</p>
+										<img class="img" src="../images/l_dock_01.png" alt="Dcoker" height="300px">
+									</a>
+								</div>
+								<br>
+
+								<p>Vamos a crear la página 404 y nuestro index:
+								</p>
+
+								<div class="img_container">
+									<a href="../images/l_dock_02.png" target="_blank">
+										<p>Abrir imagen</p>
+										<img class="img" src="../images/l_dock_02.png" alt="Dcoker" height="300px">
+									</a>
+								</div>
+								<br>
+
+								<div class="img_container">
+									<a href="../images/l_dock_03.png" target="_blank">
+										<p>Abrir imagen</p>
+										<img class="img" src="../images/l_dock_03.png" alt="Dcoker" height="300px">
+									</a>
+								</div>
+								<br>
+
+								<div class="img_container">
+									<a href="../images/l_dock_04.png" target="_blank">
+										<p>Abrir imagen</p>
+										<img class="img" src="../images/l_dock_04.png" alt="Dcoker" height="300px">
+									</a>
+								</div>
+								<br>
+
+								<p>Creamos el .conf y lo editamos:
+								</p>
+
+								<div style="background-color: black; color: lightblue;">
+									<p style="padding: 5px;">$ touch conf_dock.conf</p>
+									<p style="padding: 5px;">$ nano conf_dock.conf</p>
+								</div>
+
+								<div class="img_container">
+									<a href="../images/l_dock_05.png" target="_blank">
+										<p>Abrir imagen</p>
+										<img class="img" src="../images/l_dock_05.png" alt="Dcoker" height="300px">
+									</a>
+								</div>
+								<br>
+
+								<p>Ahora vamos a terminar de configurar nuestro Dockerfile:
+								</p>
+								<div class="img_container">
+									<a href="../images/l_dock_06.png" target="_blank">
+										<p>Abrir imagen</p>
+										<img class="img" src="../images/l_dock_06.png" alt="Dcoker" height="300px">
+									</a>
+								</div>
+								<br>
+
+								<p>Simplemete toca ejecutar el build:
+								</p>
+
+								<div style="background-color: black; color: lightblue;">
+									<p style="padding: 5px;">$ docker image build -t dock_apache .</p>
+								</div>
+
+								<div class="img_container">
+									<a href="../images/l_dock_07.png" target="_blank">
+										<p>Abrir imagen</p>
+										<img class="img" src="../images/l_dock_07.png" alt="Dcoker" height="300px">
+									</a>
+								</div>
+								<br>
+
+								<p>Ejecutamos el docker run:
+								</p>
+
+								<div style="background-color: black; color: lightblue;">
+									<p style="padding: 5px;">$ docker run -p 95:80 -v ~/dock_logs/:/var/log/apache2/
+										--name=dock_apache dock_apache</p>
+								</div>
+								<br>
+								<p>Podemos observar que la imagen está creada:
+								</p>
+								<div class="img_container">
+									<a href="../images/l_dock_08.png" target="_blank">
+										<p>Abrir imagen</p>
+										<img class="img" src="../images/l_dock_08.png" alt="Dcoker" height="300px">
+									</a>
+								</div>
+								<br>
+
+								<p>Y los resultados:
+								</p>
+								<div class="img_container">
+									<a href="../images/l_dock_09.png" target="_blank">
+										<p>Abrir imagen</p>
+										<img class="img" src="../images/l_dock_09.png" alt="Dcoker" height="300px">
+									</a>
+								</div>
+								<br>
+								<div class="img_container">
+									<a href="../images/l_dock_10.png" target="_blank">
+										<p>Abrir imagen</p>
+										<img class="img" src="../images/l_dock_10.png" alt="Dcoker" height="300px">
+									</a>
+								</div>
+								<hr>
+							</section>
+						</div>
+
+					</div>
+				</div>
+				<!-- end #content -->
+				<div id="sidebar">
+					<ul>
+						<li>
+							<h2>Todas las practicas:</h2>
+							<ul>
+								<li><a href="./practica_1.html">Practica_1</a></li>
+								<li><a href="./practica_2.html">Practica_2</a></li>
+								<li><a href="./practica_3.html">Practica_3</a></li>
+								<li><a href="./practica_4.html">Practica_4</a></li>
+							</ul>
+						</li>
+
+					</ul>
+				</div>
+				<!-- end #sidebar -->
+				<div style="clear: both;">&nbsp;</div>
+			</div>
+			<!-- end #page -->
+			<div id="footer">
+				<p>&copy; Untitled. All rights reserved. Design by <a href="http://templated.co"
+						rel="nofollow">TEMPLATED</a>.</p>
+			</div>
+		</div>
+	</div>
+	<!-- end #footer -->
+</body>
+
+</html>
